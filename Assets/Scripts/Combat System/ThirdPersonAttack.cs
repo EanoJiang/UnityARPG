@@ -56,7 +56,7 @@ public class ThirdPersonAttack : MonoBehaviour
     void PlayerAttack(int index,int inputAttackType)
     {
         //攻击时取消输入
-        thirdPersonMove.inputEnabled = false;
+        //thirdPersonMove.inputEnabled = false;
         AnimationClip animationclip;
         if (inputAttackType == 1)
         {
@@ -88,7 +88,7 @@ public class ThirdPersonAttack : MonoBehaviour
         {
             //动画播放完毕
             //恢复输入
-            thirdPersonMove.inputEnabled = true;
+            //thirdPersonMove.inputEnabled = true;
             //连招数归零
             currentAttack = 0;
         }
