@@ -1,4 +1,3 @@
-
 把原先的PlayerController脚本替换为这个
 
 ThirdPersonMove
@@ -121,7 +120,6 @@ public class ThirdPersonMove : MonoBehaviour
 
 ```
 
-
 发现这时候如果加入跳跃动画，只会播放动画，characterController的胶囊体并不会跟着上下移动
 
 OnAnimatorMove()方法用来脚本控制RootMotion
@@ -183,7 +181,6 @@ public class PlayerJumpController : MonoBehaviour
 
 ```
 
-
 ## 修复bug——跳跃用代码控制
 
 ThirdPersonJump
@@ -228,7 +225,7 @@ public class ThirdPersonJump : MonoBehaviour
 
         // 应用重力
         ApplyGravity();
-    
+  
         // 竖直移动手动控制
         ApplyVerticalMovement();
     }
@@ -314,7 +311,6 @@ public class ThirdPersonJump : MonoBehaviour
 }
 
 ```
-
 
 ## 修复BUG——锁定目标时角色朝向问题
 
@@ -417,21 +413,21 @@ public class ThirdPersonMove : MonoBehaviour
     private void LockMove()
     {
         if (LockTarget == null) return;
-    
+  
         //角色位置到目标的向量
         var dir = LockTarget.position - transform.position;
         float distance = dir.magnitude;
-    
+  
         // 检查距离是否在有效范围内
         if (distance < minLockDistance || distance > maxLockDistance)
         {
             // 距离太近或太远时，不进行锁定转向
             return;
         }
-    
+  
         //去除y轴的影响
         dir.y = 0;
-    
+  
         // 确保方向向量不为零
         if (dir.magnitude > 0.1f)
         {
@@ -441,7 +437,7 @@ public class ThirdPersonMove : MonoBehaviour
             // 使用lockRotationSpeed作为旋转速度
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lockRotationSpeed * Time.deltaTime);
         }
-    
+  
         //获取当前轴向数值
         var axisX = animator.GetFloat("AxisX");
         var axisY = animator.GetFloat("AxisY");
@@ -463,13 +459,13 @@ public class ThirdPersonMove : MonoBehaviour
             // 绘制到目标的连线
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, LockTarget.position);
-        
+      
             // 绘制锁定距离范围
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, minLockDistance);
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, maxLockDistance);
-        
+      
             // 绘制角色朝向
             Gizmos.color = Color.blue;
             Gizmos.DrawRay(transform.position, transform.forward * 2f);
@@ -478,7 +474,6 @@ public class ThirdPersonMove : MonoBehaviour
 }
 
 ```
-
 
 ## 从原项目移植攻击系统代码——ThirdPersonAttack
 
@@ -511,7 +506,7 @@ public class ThirdPersonAttack : MonoBehaviour
 
     //攻击类输入存储值，会被新的输入值覆盖
     int inputAttackType = 0;
-    
+  
     //轻击
     void OnFire1(InputValue value)
     {
@@ -601,3 +596,10 @@ public class ThirdPersonAttack : MonoBehaviour
 }
 
 ```
+
+
+
+
+> 代办：
+
+连招动画计数器有点问题，每次重新启用脚本又好了，应该是某个变量没有归零？

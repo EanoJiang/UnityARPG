@@ -6,6 +6,7 @@ public class ThirdPersonMove : MonoBehaviour
     //锁定目标
     public Transform LockTarget;
 
+    public float moveSpeed = 1f;
     //输入控制
     public bool inputEnabled = true;
     
@@ -33,6 +34,8 @@ public class ThirdPersonMove : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+        //速度控制
+        animator.speed /= animator.humanScale;
     }
 
 
@@ -46,6 +49,14 @@ public class ThirdPersonMove : MonoBehaviour
     {
         if (!inputEnabled) return;
 
+        if (Input.GetKey(KeyCode.RightShift))
+        {
+            animator.speed = moveSpeed * 2f / animator.humanScale;
+        }
+        else
+        {
+            animator.speed = moveSpeed / animator.humanScale;
+        }
         #region 水平方向
         if (LockTarget == null)
             FreeMove();
@@ -54,7 +65,6 @@ public class ThirdPersonMove : MonoBehaviour
         #endregion
 
     }
-
 
 
     /// <summary>

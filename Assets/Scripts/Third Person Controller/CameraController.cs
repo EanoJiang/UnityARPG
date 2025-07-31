@@ -33,14 +33,13 @@ public class CameraController : MonoBehaviour
         //隐藏光标
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
     }
 
     private void Update()
     {
         //视角控制反转参数
-        invertXValue = (invertX)? -1 : 1;
-        invertYValue = (invertY)? -1 : 1;
+        invertXValue = (invertX) ? -1 : 1;
+        invertYValue = (invertY) ? -1 : 1;
 
         //水平视角控制——鼠标(手柄)x轴控制rotationY
         rotationY += Input.GetAxis("Camera X") * rotationSpeed * invertYValue;
@@ -55,7 +54,8 @@ public class CameraController : MonoBehaviour
 
         //摄像机的焦点位置
         var focusPosition = followTarget.position + new Vector3(frameOffset.x, frameOffset.y, 0);
-        //摄像机放在目标后面5个单位的位置
+        
+        //摄像机放在目标后面指定距离的位置
         transform.position = focusPosition - targetRotation * new Vector3(0, 0, distance);
         //摄像机始终朝向目标
         transform.rotation = targetRotation;
@@ -63,5 +63,16 @@ public class CameraController : MonoBehaviour
 
     //水平方向的旋转，返回摄像机的水平旋转四元数。
     public Quaternion PlanarRotation => Quaternion.Euler(0, rotationY, 0);
+
+    /// <summary>
+    /// 设置相机距离
+    /// </summary>
+    public void SetDistance(float newDistance)
+    {
+        distance = newDistance;
+    }
+
+    // 获取当前相机距离
+    public float GetDistance => distance;
 
 }
