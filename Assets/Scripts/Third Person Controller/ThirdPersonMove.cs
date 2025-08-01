@@ -49,7 +49,7 @@ public class ThirdPersonMove : MonoBehaviour
     {
         if (!inputEnabled) return;
 
-        if (Input.GetKey(KeyCode.RightShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             animator.speed = moveSpeed * 2f / animator.humanScale;
         }

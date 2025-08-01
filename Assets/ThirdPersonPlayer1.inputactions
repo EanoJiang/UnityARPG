@@ -18,7 +18,7 @@
                     "name": "Roll",
                     "type": "Button",
                     "id": "edc2de81-0cb1-4d7f-acdd-71cc1376fcae",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -46,6 +46,15 @@
                     "type": "Button",
                     "id": "ddb1fe02-6cf6-4288-b45e-d4cc218ed49b",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "4b081b51-68a0-40b4-a6fe-424c0777dfe6",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -308,11 +317,22 @@
                 {
                     "name": "",
                     "id": "6f6be1fc-27f3-417e-b267-2b4e472f0eab",
-                    "path": "<Keyboard>/leftShift",
+                    "path": "<Keyboard>/leftCtrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6921bb8a-de5a-4758-a0ab-269d700ae437",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

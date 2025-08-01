@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Fly
   - Fence
+  - CinemachineTarget
+  - Animal
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -26,7 +30,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Animal
   - 
   - 
   - 
