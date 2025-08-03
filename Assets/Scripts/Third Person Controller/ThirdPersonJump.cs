@@ -1,3 +1,4 @@
+using HoaxGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,7 @@ public class ThirdPersonJump : MonoBehaviour
     Animator animator;
     ThirdPersonMove thirdPersonMove;
     CharacterController characterController;
+
 
     private void Awake()
     {
@@ -66,6 +68,7 @@ public class ThirdPersonJump : MonoBehaviour
         }
         else
         {
+
             animator.SetBool("jump", false);
         }
     }

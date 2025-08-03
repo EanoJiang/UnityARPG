@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: e8c66adb98568694b887cf3ea5b58038
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Take 001
+    second: Jump02
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -17,12 +17,17 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: "Invalid copied Avatar Rig Configuration:\n\tNo human bone found.
-      Ensure both rig type match\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Bip001_Pelvis' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'Bip001_Spine' has translation
+      animation that will be discarded.\n\t'Bip001_Spine2' has translation animation
+      that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -34,7 +39,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Jump02
+      takeName: Take 001
+      internalID: 1827226128182048838
+      firstFrame: 0
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -43,10 +77,12 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -58,6 +94,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -68,6 +105,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -646,7 +684,8 @@ ModelImporter:
     - name: S_Bone_LeftWeapon
       parentName: Bone_LeftWeapon
       position: {x: 0.00000015288592, y: 0.00000015258789, z: -0.000000076293944}
-      rotation: {x: 0.000000043772165, y: -0.000000007636118, z: -0.000000061001614, w: 1}
+      rotation: {x: 0.000000043772165, y: -0.000000007636118, z: -0.000000061001614,
+        w: 1}
       scale: {x: 1.0000002, y: 0.99999994, z: 0.99999976}
     - name: Bip001_L_ForeTwist
       parentName: Bip001_L_Forearm
@@ -666,7 +705,8 @@ ModelImporter:
     - name: Bip001_LUpArmTwist1
       parentName: Bip001_LUpArmTwist
       position: {x: -0.13840316, y: 0, z: 0}
-      rotation: {x: 0.0000000018626445, y: -0.000000029802315, z: -0.0000000018626447, w: 1}
+      rotation: {x: 0.0000000018626445, y: -0.000000029802315, z: -0.0000000018626447,
+        w: 1}
       scale: {x: 1.0000001, y: 1.0000002, z: 1}
     - name: Bip001_R_Clavicle
       parentName: Bip001_Spine2
@@ -771,7 +811,8 @@ ModelImporter:
     - name: S_Bone_RightWeapon
       parentName: Bone_RightWeapon
       position: {x: 0.000000047683713, y: -0.000000076293944, z: -0.000000038146972}
-      rotation: {x: 0.000000022351733, y: -0.0000002926681, z: -0.000000020489088, w: 1}
+      rotation: {x: 0.000000022351733, y: -0.0000002926681, z: -0.000000020489088,
+        w: 1}
       scale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
     - name: Bip001_R_ForeTwist
       parentName: Bip001_R_Forearm
@@ -791,7 +832,8 @@ ModelImporter:
     - name: Bip001_RUpArmTwist1
       parentName: Bip001_RUpArmTwist
       position: {x: -0.13840331, y: 0, z: 0.000000076293944}
-      rotation: {x: -9.3132235e-10, y: -0.000000014901159, z: 0.0000000018626449, w: 1}
+      rotation: {x: -9.3132235e-10, y: -0.000000014901159, z: 0.0000000018626449,
+        w: 1}
       scale: {x: 1, y: 1.0000001, z: 1}
     - name: Bone_Swrod_Back
       parentName: Bip001_Spine2
@@ -886,7 +928,8 @@ ModelImporter:
     - name: Bip001_RThighTwist
       parentName: Bip001_R_Thigh
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: -4.6566123e-10, y: -0.000000007450578, z: -0.0000000018626445, w: 1}
+      rotation: {x: -4.6566123e-10, y: -0.000000007450578, z: -0.0000000018626445,
+        w: 1}
       scale: {x: 1.0000002, y: 1.0000001, z: 1}
     - name: Bip001_RThighTwist1
       parentName: Bip001_RThighTwist
@@ -910,12 +953,15 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 6b37046a8cd80fe4693d16094e7b4954, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 6b37046a8cd80fe4693d16094e7b4954,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
