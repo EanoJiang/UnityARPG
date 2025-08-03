@@ -6,8 +6,8 @@ public class ThirdPersonMove : MonoBehaviour
     //锁定目标
     public Transform LockTarget;
 
-    public float moveSpeed = 1f;
-    //输入控制
+    [Header("输入参数")]
+    public float dashSpeed = 1.5f;
     public bool inputEnabled = true;
     
     // 锁定转向参数
@@ -51,11 +51,13 @@ public class ThirdPersonMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            animator.speed = moveSpeed * 2f / animator.humanScale;
+            //animator.speed = moveSpeed * 1.5f / animator.humanScale;
+            //只改变走路的速度，在混合树上乘这个SprintSpeed参数
+            animator.SetFloat("SprintSpeed", dashSpeed / animator.humanScale);
         }
         else
         {
-            animator.speed = moveSpeed / animator.humanScale;
+            animator.SetFloat("SprintSpeed", 1 / animator.humanScale);
         }
         #region 水平方向
         if (LockTarget == null)

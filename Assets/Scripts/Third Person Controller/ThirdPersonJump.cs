@@ -13,7 +13,7 @@ public class ThirdPersonJump : MonoBehaviour
     [Header("跳跃参数")]
     public float jumpForce = 7f;           // 跳跃力度
     public float gravity = -9.8f;           // 重力
-    public float fallMultiplier = 2.5f;    // 正常下落倍率
+    public float fallMultiplier = 0.1f;    // 正常下落倍率
     public float lowJumpMultiplier = 2f;   // 短按起跳键时的下落倍率
    
     private Vector3 velocity;              // 竖直速度
@@ -35,11 +35,6 @@ public class ThirdPersonJump : MonoBehaviour
         // 处理跳跃输入
         HandleJumpInput();
 
-        // 应用重力
-        ApplyGravity();
-        
-        // 竖直移动手动控制
-        ApplyVerticalMovement();
     }
 
     void OnAnimatorMove()
@@ -48,6 +43,11 @@ public class ThirdPersonJump : MonoBehaviour
         Vector3 horizontalVelocity = animator.velocity;
         horizontalVelocity.y = 0; // 忽略动画的竖直速度
         characterController.SimpleMove(horizontalVelocity);
+
+        // 应用重力
+        ApplyGravity();
+        // 竖直移动手动控制
+        ApplyVerticalMovement();
     }
 
 
@@ -77,7 +77,7 @@ public class ThirdPersonJump : MonoBehaviour
     {
         if (velocity.y < 0)
         {
-            // 下落时应用更大的重力
+            // 下落时的重力
             velocity.y += gravity * fallMultiplier * Time.deltaTime;
         }
         else if (velocity.y > 0 && !Input.GetButton("Jump"))

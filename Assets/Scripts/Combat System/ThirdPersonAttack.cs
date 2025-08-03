@@ -46,6 +46,10 @@ public class ThirdPersonAttack : MonoBehaviour
 
     //连招数
     public int currentAttack = 0;
+    //轻击连招数
+    public int currentLightAttack = 0;
+    //重击连招数
+    public int currentHeavyAttack = 0;
     //当前攻击的动画时长计时器
     float animTimer = 0;
     /// <summary>
@@ -63,16 +67,18 @@ public class ThirdPersonAttack : MonoBehaviour
             //轻击
             //动画载入
             animationclip = Attack1Clips[index];
-            //连招数加1
-            currentAttack++;
+            //轻击连招数加1
+            currentLightAttack++;
+            currentAttack = currentLightAttack;
         }
         else
         {
             //重击
             //动画载入
             animationclip = Attack2Clips[index];
-            //连招数归零
-            currentAttack = 0;
+            //重击连招数加1
+            currentHeavyAttack++;
+            currentAttack = currentHeavyAttack;
         }
         animator.CrossFade(animationclip.name, 0.2f);
         animTimer = animationclip.length;
@@ -91,16 +97,26 @@ public class ThirdPersonAttack : MonoBehaviour
             //thirdPersonMove.inputEnabled = true;
             //连招数归零
             currentAttack = 0;
+            currentLightAttack = 0;
+            currentHeavyAttack = 0;
         }
         //预输入逻辑
         if(inputAttackType != 0)
         {
             //如果有攻击键输入
-            //在当前攻击动画播放结束前0.4s，(并且当前的连招数<攻击动画列表的长度)
-            //播放对应索引的攻击动画
-            if(animTimer <= 0.4f && currentAttack < Attack1Clips.Length)
+            //在当前攻击动画播放结束前0.4s，播放对应索引的攻击动画
+            if(animTimer <= 0.4f)
             {
-                PlayerAttack(currentAttack, inputAttackType);
+                if(inputAttackType == 1 && currentLightAttack < Attack1Clips.Length)
+                {
+                    //轻击连招检查
+                    PlayerAttack(currentLightAttack, inputAttackType);
+                }
+                else if(inputAttackType == 2 && currentHeavyAttack < Attack2Clips.Length)
+                {
+                    //重击连招检查
+                    PlayerAttack(currentHeavyAttack, inputAttackType);
+                }
             }
             //攻击类输入存储值归零
             inputAttackType = 0;

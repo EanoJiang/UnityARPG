@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.InputSystem;
 
 public class PlayerOpenBox : MonoBehaviour
 {
@@ -12,13 +13,19 @@ public class PlayerOpenBox : MonoBehaviour
         if (list.Count > 0 && isPlaying == false)
         {
             isPlaying = true;
+
             var thirdPersonMove = GetComponent<ThirdPersonMove>();
             thirdPersonMove.enabled = false;
+            var thirdPersonJump = GetComponent<ThirdPersonJump>();
+            thirdPersonJump.enabled = false;
+            var thirdPersonRoll = GetComponent<ThirdPersonRoll>();
+            thirdPersonRoll.enabled = false;
+
             var director = list[0];
             list.RemoveAt(0);
             var pos = director.transform.Find("PlayerStandPosition");
             transform.position = pos.position;
-            Debug.Log(pos.position);
+            //Debug.Log(pos.position);
             transform.rotation = pos.rotation;
             var animator = GetComponent<Animator>();
             foreach (var output in director.playableAsset.outputs)
@@ -35,6 +42,8 @@ public class PlayerOpenBox : MonoBehaviour
                 yield return null;
             }
             thirdPersonMove.enabled = true;
+            thirdPersonJump.enabled = true;
+            thirdPersonRoll.enabled = true;
             isPlaying = false;
         }
     }
@@ -49,6 +58,7 @@ public class PlayerOpenBox : MonoBehaviour
             {
                 list.Add(director);
             }
+            //Debug.Log(transform.position);
         }
     }
     
