@@ -24,6 +24,7 @@ public class ThirdPersonJump : MonoBehaviour
     CharacterController characterController;
 
 
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -34,6 +35,8 @@ public class ThirdPersonJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("isGrounded", characterController.isGrounded);
+        //Debug.Log(characterController.isGrounded);
         // ¥¶¿ÌÃ¯‘æ ‰»Î
         HandleJumpInput();
 

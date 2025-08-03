@@ -9,6 +9,7 @@ TagManager:
   - CinemachineTarget
   - Animal
   - Box
+  - MountTrigger
   layers:
   - Default
   - TransparentFX

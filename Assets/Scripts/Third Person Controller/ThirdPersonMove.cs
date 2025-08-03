@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class ThirdPersonMove : MonoBehaviour
 {
@@ -10,15 +11,36 @@ public class ThirdPersonMove : MonoBehaviour
     public float dashSpeed = 1.5f;
     public bool inputEnabled = true;
     
+    // 混合树参数
+    [Header("混合树参数")]
+    public float blendTreeTransitionTime = 0.2f;          // 混合树切换时间
+    
+    // 状态机控制参数
+    [Header("状态机控制参数")]
+    public string moveStateParameter = "IsLockMode";      // 控制移动状态混合树的参数名
+    
     // 锁定转向参数
     [Header("锁定转向参数")]
     public float lockRotationSpeed = 10f;      // 锁定时的旋转速度
     public float minLockDistance = 1f;         // 最小锁定距离
     public float maxLockDistance = 20f;        // 最大锁定距离
 
+    // 自动锁定参数
+    [Header("自动锁定参数")]
+    public float lockDetectionRadius = 30f;    // 锁定检测半径
+    public LayerMask enemyLayerMask = -1;      // 敌人层级遮罩
+
     GameObject mainCamera;
     Animator animator;
     CharacterController characterController;
+    
+    // 状态机相关变量
+    private bool isLockMode = false;
+    
+    // 自动锁定相关变量
+    private List<Transform> availableTargets = new List<Transform>();
+    private int currentTargetIndex = -1;
+    private bool isLocking = false;
 
     void Start()
     {
@@ -49,6 +71,18 @@ public class ThirdPersonMove : MonoBehaviour
     {
         if (!inputEnabled) return;
 
+        // 检测鼠标中键输入
+        if (Input.GetMouseButtonDown(2)) // 鼠标中键
+        {
+            ToggleAutoLock();
+        }
+
+        // 验证当前锁定目标是否仍然有效
+        if (isLocking)
+        {
+            ValidateCurrentTarget();
+        }
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             //animator.speed = moveSpeed * 1.5f / animator.humanScale;
@@ -59,6 +93,17 @@ public class ThirdPersonMove : MonoBehaviour
         {
             animator.SetFloat("SprintSpeed", 1 / animator.humanScale);
         }
+        
+        // 检查是否进入或退出锁定模式
+        bool shouldBeLockMode = LockTarget != null;
+        if (shouldBeLockMode != isLockMode)
+        {
+            isLockMode = shouldBeLockMode;
+        }
+        
+        // 更新混合树权重
+        UpdateBlendTreeWeight();
+        
         #region 水平方向
         if (LockTarget == null)
             FreeMove();
@@ -68,6 +113,14 @@ public class ThirdPersonMove : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 更新混合树权重
+    /// </summary>
+    private void UpdateBlendTreeWeight()
+    {
+        // 状态机参数控制
+        animator.SetBool(moveStateParameter, isLockMode);
+    }
 
     /// <summary>
     /// 新版Input输入系统————移动
@@ -134,37 +187,160 @@ public class ThirdPersonMove : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lockRotationSpeed * Time.deltaTime);
         }
         
-        //获取当前轴向数值
-        var axisX = animator.GetFloat("AxisX");
-        var axisY = animator.GetFloat("AxisY");
+        // 锁定移动混合树参数
+        var AxisX = animator.GetFloat("AxisX");
+        var AxisY = animator.GetFloat("AxisY");
         //平滑改变轴向
-        axisX = Mathf.MoveTowards(axisX, moveAmount.x, Time.deltaTime * 5f);
-        axisY = Mathf.MoveTowards(axisY, moveAmount.y, Time.deltaTime * 5f);
-        //更新动画参数
-        animator.SetFloat("AxisX", axisX);
-        animator.SetFloat("AxisY", axisY);
+        AxisX = Mathf.MoveTowards(AxisX, moveAmount.x, Time.deltaTime * 5f);
+        AxisY = Mathf.MoveTowards(AxisY, moveAmount.y, Time.deltaTime * 5f);
+        //更新锁定移动动画参数
+        animator.SetFloat("AxisX", AxisX);
+        animator.SetFloat("AxisY", AxisY);
     }
 
     /// <summary>
-    /// 调试绘制 - 在Scene视图中显示锁定信息
+    /// 切换自动锁定状态
     /// </summary>
-    void OnDrawGizmosSelected()
+    private void ToggleAutoLock()
     {
-        if (LockTarget != null)
+        if (!isLocking)
         {
-            // 绘制到目标的连线
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, LockTarget.position);
-            
-            // 绘制锁定距离范围
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, minLockDistance);
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, maxLockDistance);
-            
-            // 绘制角色朝向
-            Gizmos.color = Color.blue;
-            Gizmos.DrawRay(transform.position, transform.forward * 2f);
+            // 开始锁定模式
+            FindAvailableTargets();
+            if (availableTargets.Count > 0)
+            {
+                currentTargetIndex = 0;
+                LockTarget = availableTargets[currentTargetIndex];
+                isLocking = true;
+                Debug.Log($"锁定目标: {LockTarget.name}");
+            }
+        }
+        else
+        {
+            // 切换到下一个目标
+            if (availableTargets.Count > 1)
+            {
+                currentTargetIndex = (currentTargetIndex + 1) % availableTargets.Count;
+                LockTarget = availableTargets[currentTargetIndex];
+                Debug.Log($"切换到目标: {LockTarget.name}");
+            }
+            else
+            {
+                // 只有一个目标或没有目标，退出锁定模式
+                ExitLockMode();
+            }
         }
     }
+
+    /// <summary>
+    /// 查找可用的锁定目标
+    /// </summary>
+    private void FindAvailableTargets()
+    {
+        availableTargets.Clear();
+        
+        // 获取检测半径内的所有碰撞体
+        Collider[] colliders = Physics.OverlapSphere(transform.position, lockDetectionRadius, enemyLayerMask);
+        
+        foreach (Collider col in colliders)
+        {
+            // 检查对象名称是否包含"Enemy"
+            if (col.name.ToLower().Contains("enemy"))
+            {
+                // 检查距离是否在有效范围内
+                float distance = Vector3.Distance(transform.position, col.transform.position);
+                if (distance >= minLockDistance && distance <= maxLockDistance)
+                {
+                    availableTargets.Add(col.transform);
+                }
+            }
+        }
+        
+        // 按距离排序，最近的优先
+        availableTargets.Sort((a, b) => 
+            Vector3.Distance(transform.position, a.position).CompareTo(
+                Vector3.Distance(transform.position, b.position)));
+    }
+
+    /// <summary>
+    /// 退出锁定模式
+    /// </summary>
+    private void ExitLockMode()
+    {
+        LockTarget = null;
+        isLocking = false;
+        currentTargetIndex = -1;
+        availableTargets.Clear();
+        Debug.Log("退出锁定模式");
+    }
+
+    /// <summary>
+    /// 检查当前锁定目标是否仍然有效
+    /// </summary>
+    private void ValidateCurrentTarget()
+    {
+        if (LockTarget == null)
+        {
+            ExitLockMode();
+            return;
+        }
+        
+        // 检查目标是否仍然存在
+        if (LockTarget.gameObject == null)
+        {
+            ExitLockMode();
+            return;
+        }
+        
+        // 检查距离是否仍然有效
+        float distance = Vector3.Distance(transform.position, LockTarget.position);
+        if (distance < minLockDistance || distance > maxLockDistance)
+        {
+            ExitLockMode();
+            return;
+        }
+    }
+
+    /// <summary>
+    /// 手动设置锁定目标
+    /// </summary>
+    /// <param name="target">要锁定的目标</param>
+    public void SetLockTarget(Transform target)
+    {
+        if (target != null)
+        {
+            LockTarget = target;
+            isLocking = true;
+            currentTargetIndex = -1; // 手动设置时不使用索引
+            Debug.Log($"手动锁定目标: {target.name}");
+        }
+    }
+
+    /// <summary>
+    /// 手动清除锁定目标
+    /// </summary>
+    public void ClearLockTarget()
+    {
+        ExitLockMode();
+    }
+
+    /// <summary>
+    /// 获取当前是否处于锁定模式
+    /// </summary>
+    /// <returns>是否锁定中</returns>
+    public bool IsLocking()
+    {
+        return isLocking;
+    }
+
+    /// <summary>
+    /// 获取当前可用目标数量
+    /// </summary>
+    /// <returns>可用目标数量</returns>
+    public int GetAvailableTargetCount()
+    {
+        return availableTargets.Count;
+    }
+
+
 }

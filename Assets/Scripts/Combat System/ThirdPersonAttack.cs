@@ -59,8 +59,6 @@ public class ThirdPersonAttack : MonoBehaviour
     /// <param name="inputAttackType"></param>
     void PlayerAttack(int index,int inputAttackType)
     {
-        //攻击时取消输入
-        //thirdPersonMove.inputEnabled = false;
         AnimationClip animationclip;
         if (inputAttackType == 1)
         {
@@ -105,7 +103,7 @@ public class ThirdPersonAttack : MonoBehaviour
         {
             //如果有攻击键输入
             //在当前攻击动画播放结束前0.4s，播放对应索引的攻击动画
-            if(animTimer <= 0.4f)
+            if (animTimer <= 0.4f)
             {
                 if(inputAttackType == 1 && currentLightAttack < Attack1Clips.Length)
                 {
