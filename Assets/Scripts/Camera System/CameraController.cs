@@ -65,7 +65,7 @@ public class CameraController : MonoBehaviour
         isInitialized = true;
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (followTarget == null || !isInitialized) return;
 
@@ -91,8 +91,8 @@ public class CameraController : MonoBehaviour
         targetPosition = focusPosition - targetRotation * new Vector3(0, 0, distance);
 
         // 使用平滑插值更新相机位置和旋转
-        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, smoothSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.fixedDeltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, smoothSpeed * Time.fixedDeltaTime);
     }
 
 

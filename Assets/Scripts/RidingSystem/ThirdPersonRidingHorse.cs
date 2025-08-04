@@ -54,11 +54,7 @@ public class ThirdPersonRidingHorse : MonoBehaviour
         {
             Update_MountPlayerPosition();
         }
-        //下马
-        else if (!isOnHorse && !isMounting)
-        {
-            // 下马逻辑移到HandleInput中处理
-        }
+
     }
 
     /// <summary>
@@ -66,12 +62,14 @@ public class ThirdPersonRidingHorse : MonoBehaviour
     /// </summary>
     private void Update_MountPlayerPosition()
     {
-        transform.rotation = horse.transform.rotation;
-        transform.position = horse.transform.position;
         //将角色放到马上
         var playerPoint = horse.transform.Find("PlayerPoint");
-        transform.SetParent(playerPoint);
-        transform.localPosition = Vector3.zero;
+        if (playerPoint != null)
+        {
+            transform.SetParent(playerPoint);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+        }
         //在马上禁用角色的characterController和move
         characterController.enabled = false;
         thirdPersonMove.enabled = false;
@@ -237,14 +235,14 @@ public class ThirdPersonRidingHorse : MonoBehaviour
         // 获取动画状态信息
         AnimatorStateInfo stateInfo = playerAnimator.GetCurrentAnimatorStateInfo(dismountLayerIndex);
         
-        // 等待动画播放到50%就完成下马
-        while (stateInfo.normalizedTime < 0.5f)
+        // 等待动画完全播放完毕
+        while (stateInfo.normalizedTime < 1.0f)
         {
             yield return null;
             stateInfo = playerAnimator.GetCurrentAnimatorStateInfo(dismountLayerIndex);
         }
         
-        // 动画播放到50%，执行下马完成逻辑
+        // 动画播放完毕，执行下马完成逻辑
         CompleteDismounting();
     }
 
@@ -266,8 +264,8 @@ public class ThirdPersonRidingHorse : MonoBehaviour
             // 设置角色位置（从马上下来）
             transform.SetParent(null);
             
-            // 计算下马后的位置（可以根据需要调整）
-            Vector3 dismountPosition = horse.transform.position + horse.transform.forward * 2f;
+            // 计算下马后的位置（从马的右边下马）
+            Vector3 dismountPosition = horse.transform.position + horse.transform.right * 2f;
             transform.position = dismountPosition;
             transform.rotation = horse.transform.rotation;
             

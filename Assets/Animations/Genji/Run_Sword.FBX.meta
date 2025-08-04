@@ -1,185 +1,518 @@
 fileFormatVersion: 2
 guid: 1e636487c87b83c458e52baae5dbcd43
-timeCreated: 1514741995
-licenseType: Store
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: Bip001 Footsteps
-    100002: Bip001 HeadNub
-    100004: Bip001 L Finger0Nub
-    100006: Bip001 L Finger1Nub
-    100008: Bip001 L Finger2Nub
-    100010: Bip001 L Finger3Nub
-    100012: Bip001 L Finger4Nub
-    100014: Bip001 L Toe0Nub
-    100016: Bip001 R Finger0Nub
-    100018: Bip001 R Finger1Nub
-    100020: Bip001 R Finger2Nub
-    100022: Bip001 R Finger3Nub
-    100024: Bip001 R Finger4Nub
-    100026: Bip001 R Toe0Nub
-    100028: BladeL
-    100030: BladeL_Bone
-    100032: BladeR
-    100034: BladeR_Bone
-    100036: Body
-    100038: Chest
-    100040: Fingers
-    100042: Head
-    100044: Hips
-    100046: Joint
-    100048: LeftArm
-    100050: LeftFoot
-    100052: LeftForeArm
-    100054: LeftHand
-    100056: LeftIndex1
-    100058: LeftIndex2
-    100060: LeftIndex3
-    100062: LeftLeg
-    100064: LeftMiddle1
-    100066: LeftMiddle2
-    100068: LeftMiddle3
-    100070: LeftPink1
-    100072: LeftPink2
-    100074: LeftPink3
-    100076: LeftRing1
-    100078: LeftRing2
-    100080: LeftRing3
-    100082: LeftShoulder
-    100084: LeftThumb1
-    100086: LeftThumb2
-    100088: LeftThumb3
-    100090: LeftToe
-    100092: LeftUpLeg
-    100094: Neck
-    100096: Pelvis
-    100098: RightArm
-    100100: RightFoot
-    100102: RightForeArm
-    100104: RightHand
-    100106: RightIndex1
-    100108: RightIndex2
-    100110: RightIndex3
-    100112: RightLeg
-    100114: RightMiddle1
-    100116: RightMiddle2
-    100118: RightMiddle3
-    100120: RightPinky1
-    100122: RightPinky2
-    100124: RightPinky3
-    100126: RightRing1
-    100128: RightRing2
-    100130: RightRing3
-    100132: RightShoulder
-    100134: RightThumb1
-    100136: RightThumb2
-    100138: RightThumb3
-    100140: RightToe
-    100142: RightUpLeg
-    100144: //RootNode
-    100146: Spine
-    100148: Sword_Hold
-    100150: Sword_Hold_Bone
-    400000: Bip001 Footsteps
-    400002: Bip001 HeadNub
-    400004: Bip001 L Finger0Nub
-    400006: Bip001 L Finger1Nub
-    400008: Bip001 L Finger2Nub
-    400010: Bip001 L Finger3Nub
-    400012: Bip001 L Finger4Nub
-    400014: Bip001 L Toe0Nub
-    400016: Bip001 R Finger0Nub
-    400018: Bip001 R Finger1Nub
-    400020: Bip001 R Finger2Nub
-    400022: Bip001 R Finger3Nub
-    400024: Bip001 R Finger4Nub
-    400026: Bip001 R Toe0Nub
-    400028: BladeL
-    400030: BladeL_Bone
-    400032: BladeR
-    400034: BladeR_Bone
-    400036: Body
-    400038: Chest
-    400040: Fingers
-    400042: Head
-    400044: Hips
-    400046: Joint
-    400048: LeftArm
-    400050: LeftFoot
-    400052: LeftForeArm
-    400054: LeftHand
-    400056: LeftIndex1
-    400058: LeftIndex2
-    400060: LeftIndex3
-    400062: LeftLeg
-    400064: LeftMiddle1
-    400066: LeftMiddle2
-    400068: LeftMiddle3
-    400070: LeftPink1
-    400072: LeftPink2
-    400074: LeftPink3
-    400076: LeftRing1
-    400078: LeftRing2
-    400080: LeftRing3
-    400082: LeftShoulder
-    400084: LeftThumb1
-    400086: LeftThumb2
-    400088: LeftThumb3
-    400090: LeftToe
-    400092: LeftUpLeg
-    400094: Neck
-    400096: Pelvis
-    400098: RightArm
-    400100: RightFoot
-    400102: RightForeArm
-    400104: RightHand
-    400106: RightIndex1
-    400108: RightIndex2
-    400110: RightIndex3
-    400112: RightLeg
-    400114: RightMiddle1
-    400116: RightMiddle2
-    400118: RightMiddle3
-    400120: RightPinky1
-    400122: RightPinky2
-    400124: RightPinky3
-    400126: RightRing1
-    400128: RightRing2
-    400130: RightRing3
-    400132: RightShoulder
-    400134: RightThumb1
-    400136: RightThumb2
-    400138: RightThumb3
-    400140: RightToe
-    400142: RightUpLeg
-    400144: //RootNode
-    400146: Spine
-    400148: Sword_Hold
-    400150: Sword_Hold_Bone
-    4300000: Body
-    4300002: Fingers
-    4300004: Joint
-    4300006: BladeR
-    4300008: BladeL
-    4300010: Sword_Hold
-    7400000: Run_Sword
-    9500000: //RootNode
-    13700000: BladeL
-    13700002: BladeR
-    13700004: Body
-    13700006: Fingers
-    13700008: Joint
-    13700010: Sword_Hold
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Bip001 Footsteps
+  - first:
+      1: 100002
+    second: Bip001 HeadNub
+  - first:
+      1: 100004
+    second: Bip001 L Finger0Nub
+  - first:
+      1: 100006
+    second: Bip001 L Finger1Nub
+  - first:
+      1: 100008
+    second: Bip001 L Finger2Nub
+  - first:
+      1: 100010
+    second: Bip001 L Finger3Nub
+  - first:
+      1: 100012
+    second: Bip001 L Finger4Nub
+  - first:
+      1: 100014
+    second: Bip001 L Toe0Nub
+  - first:
+      1: 100016
+    second: Bip001 R Finger0Nub
+  - first:
+      1: 100018
+    second: Bip001 R Finger1Nub
+  - first:
+      1: 100020
+    second: Bip001 R Finger2Nub
+  - first:
+      1: 100022
+    second: Bip001 R Finger3Nub
+  - first:
+      1: 100024
+    second: Bip001 R Finger4Nub
+  - first:
+      1: 100026
+    second: Bip001 R Toe0Nub
+  - first:
+      1: 100028
+    second: BladeL
+  - first:
+      1: 100030
+    second: BladeL_Bone
+  - first:
+      1: 100032
+    second: BladeR
+  - first:
+      1: 100034
+    second: BladeR_Bone
+  - first:
+      1: 100036
+    second: Body
+  - first:
+      1: 100038
+    second: Chest
+  - first:
+      1: 100040
+    second: Fingers
+  - first:
+      1: 100042
+    second: Head
+  - first:
+      1: 100044
+    second: Hips
+  - first:
+      1: 100046
+    second: Joint
+  - first:
+      1: 100048
+    second: LeftArm
+  - first:
+      1: 100050
+    second: LeftFoot
+  - first:
+      1: 100052
+    second: LeftForeArm
+  - first:
+      1: 100054
+    second: LeftHand
+  - first:
+      1: 100056
+    second: LeftIndex1
+  - first:
+      1: 100058
+    second: LeftIndex2
+  - first:
+      1: 100060
+    second: LeftIndex3
+  - first:
+      1: 100062
+    second: LeftLeg
+  - first:
+      1: 100064
+    second: LeftMiddle1
+  - first:
+      1: 100066
+    second: LeftMiddle2
+  - first:
+      1: 100068
+    second: LeftMiddle3
+  - first:
+      1: 100070
+    second: LeftPink1
+  - first:
+      1: 100072
+    second: LeftPink2
+  - first:
+      1: 100074
+    second: LeftPink3
+  - first:
+      1: 100076
+    second: LeftRing1
+  - first:
+      1: 100078
+    second: LeftRing2
+  - first:
+      1: 100080
+    second: LeftRing3
+  - first:
+      1: 100082
+    second: LeftShoulder
+  - first:
+      1: 100084
+    second: LeftThumb1
+  - first:
+      1: 100086
+    second: LeftThumb2
+  - first:
+      1: 100088
+    second: LeftThumb3
+  - first:
+      1: 100090
+    second: LeftToe
+  - first:
+      1: 100092
+    second: LeftUpLeg
+  - first:
+      1: 100094
+    second: Neck
+  - first:
+      1: 100096
+    second: Pelvis
+  - first:
+      1: 100098
+    second: RightArm
+  - first:
+      1: 100100
+    second: RightFoot
+  - first:
+      1: 100102
+    second: RightForeArm
+  - first:
+      1: 100104
+    second: RightHand
+  - first:
+      1: 100106
+    second: RightIndex1
+  - first:
+      1: 100108
+    second: RightIndex2
+  - first:
+      1: 100110
+    second: RightIndex3
+  - first:
+      1: 100112
+    second: RightLeg
+  - first:
+      1: 100114
+    second: RightMiddle1
+  - first:
+      1: 100116
+    second: RightMiddle2
+  - first:
+      1: 100118
+    second: RightMiddle3
+  - first:
+      1: 100120
+    second: RightPinky1
+  - first:
+      1: 100122
+    second: RightPinky2
+  - first:
+      1: 100124
+    second: RightPinky3
+  - first:
+      1: 100126
+    second: RightRing1
+  - first:
+      1: 100128
+    second: RightRing2
+  - first:
+      1: 100130
+    second: RightRing3
+  - first:
+      1: 100132
+    second: RightShoulder
+  - first:
+      1: 100134
+    second: RightThumb1
+  - first:
+      1: 100136
+    second: RightThumb2
+  - first:
+      1: 100138
+    second: RightThumb3
+  - first:
+      1: 100140
+    second: RightToe
+  - first:
+      1: 100142
+    second: RightUpLeg
+  - first:
+      1: 100144
+    second: //RootNode
+  - first:
+      1: 100146
+    second: Spine
+  - first:
+      1: 100148
+    second: Sword_Hold
+  - first:
+      1: 100150
+    second: Sword_Hold_Bone
+  - first:
+      4: 400000
+    second: Bip001 Footsteps
+  - first:
+      4: 400002
+    second: Bip001 HeadNub
+  - first:
+      4: 400004
+    second: Bip001 L Finger0Nub
+  - first:
+      4: 400006
+    second: Bip001 L Finger1Nub
+  - first:
+      4: 400008
+    second: Bip001 L Finger2Nub
+  - first:
+      4: 400010
+    second: Bip001 L Finger3Nub
+  - first:
+      4: 400012
+    second: Bip001 L Finger4Nub
+  - first:
+      4: 400014
+    second: Bip001 L Toe0Nub
+  - first:
+      4: 400016
+    second: Bip001 R Finger0Nub
+  - first:
+      4: 400018
+    second: Bip001 R Finger1Nub
+  - first:
+      4: 400020
+    second: Bip001 R Finger2Nub
+  - first:
+      4: 400022
+    second: Bip001 R Finger3Nub
+  - first:
+      4: 400024
+    second: Bip001 R Finger4Nub
+  - first:
+      4: 400026
+    second: Bip001 R Toe0Nub
+  - first:
+      4: 400028
+    second: BladeL
+  - first:
+      4: 400030
+    second: BladeL_Bone
+  - first:
+      4: 400032
+    second: BladeR
+  - first:
+      4: 400034
+    second: BladeR_Bone
+  - first:
+      4: 400036
+    second: Body
+  - first:
+      4: 400038
+    second: Chest
+  - first:
+      4: 400040
+    second: Fingers
+  - first:
+      4: 400042
+    second: Head
+  - first:
+      4: 400044
+    second: Hips
+  - first:
+      4: 400046
+    second: Joint
+  - first:
+      4: 400048
+    second: LeftArm
+  - first:
+      4: 400050
+    second: LeftFoot
+  - first:
+      4: 400052
+    second: LeftForeArm
+  - first:
+      4: 400054
+    second: LeftHand
+  - first:
+      4: 400056
+    second: LeftIndex1
+  - first:
+      4: 400058
+    second: LeftIndex2
+  - first:
+      4: 400060
+    second: LeftIndex3
+  - first:
+      4: 400062
+    second: LeftLeg
+  - first:
+      4: 400064
+    second: LeftMiddle1
+  - first:
+      4: 400066
+    second: LeftMiddle2
+  - first:
+      4: 400068
+    second: LeftMiddle3
+  - first:
+      4: 400070
+    second: LeftPink1
+  - first:
+      4: 400072
+    second: LeftPink2
+  - first:
+      4: 400074
+    second: LeftPink3
+  - first:
+      4: 400076
+    second: LeftRing1
+  - first:
+      4: 400078
+    second: LeftRing2
+  - first:
+      4: 400080
+    second: LeftRing3
+  - first:
+      4: 400082
+    second: LeftShoulder
+  - first:
+      4: 400084
+    second: LeftThumb1
+  - first:
+      4: 400086
+    second: LeftThumb2
+  - first:
+      4: 400088
+    second: LeftThumb3
+  - first:
+      4: 400090
+    second: LeftToe
+  - first:
+      4: 400092
+    second: LeftUpLeg
+  - first:
+      4: 400094
+    second: Neck
+  - first:
+      4: 400096
+    second: Pelvis
+  - first:
+      4: 400098
+    second: RightArm
+  - first:
+      4: 400100
+    second: RightFoot
+  - first:
+      4: 400102
+    second: RightForeArm
+  - first:
+      4: 400104
+    second: RightHand
+  - first:
+      4: 400106
+    second: RightIndex1
+  - first:
+      4: 400108
+    second: RightIndex2
+  - first:
+      4: 400110
+    second: RightIndex3
+  - first:
+      4: 400112
+    second: RightLeg
+  - first:
+      4: 400114
+    second: RightMiddle1
+  - first:
+      4: 400116
+    second: RightMiddle2
+  - first:
+      4: 400118
+    second: RightMiddle3
+  - first:
+      4: 400120
+    second: RightPinky1
+  - first:
+      4: 400122
+    second: RightPinky2
+  - first:
+      4: 400124
+    second: RightPinky3
+  - first:
+      4: 400126
+    second: RightRing1
+  - first:
+      4: 400128
+    second: RightRing2
+  - first:
+      4: 400130
+    second: RightRing3
+  - first:
+      4: 400132
+    second: RightShoulder
+  - first:
+      4: 400134
+    second: RightThumb1
+  - first:
+      4: 400136
+    second: RightThumb2
+  - first:
+      4: 400138
+    second: RightThumb3
+  - first:
+      4: 400140
+    second: RightToe
+  - first:
+      4: 400142
+    second: RightUpLeg
+  - first:
+      4: 400144
+    second: //RootNode
+  - first:
+      4: 400146
+    second: Spine
+  - first:
+      4: 400148
+    second: Sword_Hold
+  - first:
+      4: 400150
+    second: Sword_Hold_Bone
+  - first:
+      43: 4300000
+    second: Body
+  - first:
+      43: 4300002
+    second: Fingers
+  - first:
+      43: 4300004
+    second: Joint
+  - first:
+      43: 4300006
+    second: BladeR
+  - first:
+      43: 4300008
+    second: BladeL
+  - first:
+      43: 4300010
+    second: Sword_Hold
+  - first:
+      74: 7400000
+    second: Run_Sword
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: BladeL
+  - first:
+      137: 13700002
+    second: BladeR
+  - first:
+      137: 13700004
+    second: Body
+  - first:
+      137: 13700006
+    second: Fingers
+  - first:
+      137: 13700008
+    second: Joint
+  - first:
+      137: 13700010
+    second: Sword_Hold
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Inbetween bone
@@ -189,6 +522,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -200,6 +535,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Run_Sword
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 36
       wrapMode: 0
@@ -208,10 +544,10 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
@@ -231,30 +567,49 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 0
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: Hips
       humanName: Hips
@@ -1028,15 +1383,20 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c33782162c4c59b45a2acee2e7684428,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -8035,7 +8035,7 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    m_Quality: 3
+    m_Quality: 2
     m_FrameInfluence: 0.1
     m_JitterScale: 1
     m_MipBias: 0
@@ -18721,6 +18721,7 @@ GameObject:
   - component: {fileID: 1787919913}
   - component: {fileID: 1787919912}
   - component: {fileID: 1787919911}
+  - component: {fileID: 5866666020245338243}
   - component: {fileID: 1787919910}
   - component: {fileID: 5866666020245338241}
   - component: {fileID: 1787919917}
@@ -23022,6 +23023,27 @@ MonoBehaviour:
     Variable: {fileID: 0}
   DisableList: []
   Editor_Tabs1: 0
+--- !u!114 &5866666020245338243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147600488512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a36a2ce77d10045b34157d66eb7c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponObject: {fileID: 7654998720358226814}
+  rightHandBone: {fileID: 8222764261936750922}
+  stowedParent: {fileID: 6361242265088502939}
+  stowedPosition: {x: -0.5804363, y: -0.3037646, z: -0.04999794}
+  stowedRotation: {x: 242.248, y: -274.39, z: -379.458}
+  combatLayerName: Combat
+  equipWeaponAnimation: Sword-In
+  stowWeaponAnimation: Sword-Out
+  animationTransitionTime: 0.1
 --- !u!1 &5868994700784766134
 GameObject:
   m_ObjectHideFlags: 0

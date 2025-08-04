@@ -18,6 +18,7 @@ public class ThirdPersonJump : MonoBehaviour
     public float lowJumpMultiplier = 2f;   // 短按起跳键时的下落倍率
    
     private Vector3 velocity;              // 竖直速度
+    private bool isJumpAnimationPlaying = false; // 跳跃动画是否正在播放
 
     Animator animator;
     ThirdPersonMove thirdPersonMove;
@@ -64,14 +65,17 @@ public class ThirdPersonJump : MonoBehaviour
     {
         jump = Input.GetButtonDown("Jump");
 
-        if (jump)
+        // 检查跳跃动画是否正在播放
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        isJumpAnimationPlaying = stateInfo.IsName("Jump") && stateInfo.normalizedTime < 1.0f;
+
+        if (jump && characterController.isGrounded && !isJumpAnimationPlaying)
         {
             velocity.y = jumpForce;
             animator.SetBool("jump", true);
         }
         else
         {
-
             animator.SetBool("jump", false);
         }
     }

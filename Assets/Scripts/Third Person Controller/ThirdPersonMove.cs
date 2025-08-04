@@ -71,6 +71,7 @@ public class ThirdPersonMove : MonoBehaviour
     {
         if (!inputEnabled) return;
 
+        #region 锁敌
         // 检测鼠标中键输入
         if (Input.GetMouseButtonDown(2)) // 鼠标中键
         {
@@ -83,6 +84,9 @@ public class ThirdPersonMove : MonoBehaviour
             ValidateCurrentTarget();
         }
 
+        #endregion
+
+        #region 疾跑
         if (Input.GetKey(KeyCode.LeftShift))
         {
             //animator.speed = moveSpeed * 1.5f / animator.humanScale;
@@ -93,7 +97,8 @@ public class ThirdPersonMove : MonoBehaviour
         {
             animator.SetFloat("SprintSpeed", 1 / animator.humanScale);
         }
-        
+        #endregion
+
         // 检查是否进入或退出锁定模式
         bool shouldBeLockMode = LockTarget != null;
         if (shouldBeLockMode != isLockMode)
@@ -154,6 +159,7 @@ public class ThirdPersonMove : MonoBehaviour
         //平滑过渡到Y轴目标值
         axisY = Mathf.MoveTowards(axisY, moveAmount.magnitude, Time.deltaTime * 5f);
         animator.SetFloat("AxisY", axisY);
+
     }
 
     /// <summary>
