@@ -10,6 +10,9 @@ public class ThirdPersonRidingHorse : MonoBehaviour
     public GameObject horse;
     public bool isOnHorse = false;
 
+    [Header("相机设置")]
+    [SerializeField] CameraController cameraController; // 相机控制器引用
+
     [Header("动画参数")]
     public int mountLayerIndex = 3;
     public int ridingLayerIndex = 2;
@@ -31,6 +34,12 @@ public class ThirdPersonRidingHorse : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         thirdPersonMove = GetComponent<ThirdPersonMove>();
+        
+        // 如果没有手动设置相机控制器，自动查找
+        if (cameraController == null)
+        {
+            cameraController = FindObjectOfType<CameraController>();
+        }
     }
 
     private void Update()
@@ -192,6 +201,12 @@ public class ThirdPersonRidingHorse : MonoBehaviour
         // 立即设置RidingHorse动画层权重为1，过渡到骑马状态
         animator.SetLayerWeight(ridingLayerIndex, 1f);
         
+        // 切换相机跟随目标到马
+        if (cameraController != null && horse != null)
+        {
+            cameraController.SwitchToHorse(horse.transform);
+        }
+        
         currentMountTrigger = null;
         mountCoroutine = null;
         
@@ -278,6 +293,12 @@ public class ThirdPersonRidingHorse : MonoBehaviour
             
             // 立即关闭马上动作层，过渡到正常状态
             animator.SetLayerWeight(ridingLayerIndex, 0f);
+            
+            // 切换相机跟随目标回玩家
+            if (cameraController != null)
+            {
+                cameraController.SwitchBackToPlayer();
+            }
         }
         
         dismountCoroutine = null;

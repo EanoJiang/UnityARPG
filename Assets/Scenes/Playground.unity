@@ -7989,11 +7989,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 543450652075762426}
-  rotationSpeed: 50
   distance: 3
+  mouseSensitivity: 1.5
+  useRawInput: 1
   minVerticalAngle: -5
   maxVerticalAngle: 45
   frameOffset: {x: 0, y: 1}
+  horseFrameOffset: {x: 0, y: 1.5}
+  horseDistance: 8
+  horseMinVerticalAngle: -15
+  horseMaxVerticalAngle: 60
   invertX: 1
   invertY: 0
   smoothSpeed: 10
@@ -9973,6 +9978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horse: {fileID: 1896912838137973}
   isOnHorse: 0
+  cameraController: {fileID: 0}
   mountLayerIndex: 3
   ridingLayerIndex: 2
   dismountLayerIndex: 4
